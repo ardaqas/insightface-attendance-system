@@ -77,6 +77,10 @@ Save a visualization:
 python recognize.py --image path/to/test.jpg --db_dir database --save_vis --output outputs/result.jpg
 ```
 
+## Sample data
+If you want to try the pipeline with a public dataset, download:
+https://www.kaggle.com/datasets/vishesh1412/celebrity-face-image-dataset
+
 ## Attendance session
 Run a session that loads the enrolled students once, counts only expected identities,
 and produces a final attendance report with PRESENT/ABSENT for each student.
