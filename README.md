@@ -3,6 +3,11 @@
 Minimal face recognition pipeline using pretrained InsightFace models and FAISS,
 with enrollment, recognition, and attendance reporting.
 
+## Why this project
+Attendance tracking is often manual, slow, and error-prone. This MVP explores a
+lightweight, offline-first workflow that can recognize enrolled identities and
+produce reliable attendance reports with minimal setup.
+
 ## Highlights
 - Face detection, alignment, and embedding (RetinaFace + ArcFace)
 - FAISS vector search with cosine similarity
@@ -39,6 +44,13 @@ face_recognition_mvp/
 1. Enroll faces into a database.
 2. Recognize from image or webcam.
 3. Run attendance with expected list and report output.
+
+## Pipeline overview
+1. Detect + align faces from input frames or images.
+2. Extract embeddings with a pretrained model.
+3. Search the FAISS index for the nearest identity.
+4. Apply a threshold to decide identity vs. unknown.
+5. Log events and generate a final attendance report.
 
 ## Enrollment
 Folder structure:
