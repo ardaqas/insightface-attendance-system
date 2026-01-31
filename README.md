@@ -23,6 +23,35 @@ produce reliable attendance reports with minimal setup.
 - Attendance session
 - Outputs
 
+### Session workflow (session_attendance.py)
+```mermaid
+flowchart TD
+  A[Start session] --> B[Load expected CSV]
+  B --> C[Load FAISS index + metadata]
+  C --> D{Input source}
+  D -->|Camera| E[Capture frame]
+  D -->|Images dir| F[Iterate images]
+  E --> G[Detect + align face]
+  F --> G
+  G --> H[Extract embedding]
+  H --> I[FAISS nearest match]
+  I --> J{Threshold}
+  J -->|Match| K[Count present + log]
+  J -->|Unknown| L[Log unknown]
+  K --> M[Update seen IDs]
+  L --> M
+  M --> N{More inputs?}
+  N -->|Yes| D
+  N -->|No| O[Write attendance report]
+  O --> P[Finish]
+```
+
+**Framework mapping**
+- Input: `load_image_rgb`, `capture_from_camera`
+- Face pipeline: `detect_face` → `align_face` → `extract_embedding`
+- Matching: `find_best_match` + `decide_identity` (threshold)
+- Attendance logic: `AttendanceState` + `append_event` + `write_attendance_report`
+
 ## Quick start
 ```bash
 python -m venv .venv
