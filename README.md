@@ -15,14 +15,6 @@ produce reliable attendance reports with minimal setup.
 - Single-image or webcam recognition
 - Attendance session with expected list + absent report
 
-## Contents
-- Quick start
-- Project layout
-- Enrollment
-- Recognition
-- Attendance session
-- Outputs
-
 ### Session workflow (session_attendance.py)
 ```mermaid
 flowchart TD
@@ -51,6 +43,16 @@ flowchart TD
 - Face pipeline: `detect_face` → `align_face` → `extract_embedding`
 - Matching: `find_best_match` + `decide_identity` (threshold)
 - Attendance logic: `AttendanceState` + `append_event` + `write_attendance_report`
+
+  
+## Contents
+- Quick start
+- Project layout
+- Enrollment
+- Recognition
+- Attendance session
+- Outputs
+
 
 ## Quick start
 ```bash
